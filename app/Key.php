@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Key extends Model
 {
-    protected $table="tukhoa";
+    protected $table = "tukhoa";
 }
 

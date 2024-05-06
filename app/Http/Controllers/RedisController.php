@@ -11,14 +11,16 @@ use Illuminate\Support\Facades\Auth;
 
 class RedisController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         // $user = User::find($id);
-    	$messages = Messages::all();
-    	return view('messages',compact('messages'));
+        $messages = Messages::all();
+        return view('messages', compact('messages'));
     }
 
-    public function postSendMessage(Request $request){
-    	$messages = Messages::create($request->all());
+    public function postSendMessage(Request $request)
+    {
+        $messages = Messages::create($request->all());
         event(
             $e = new RedisEvent($messages)
         );

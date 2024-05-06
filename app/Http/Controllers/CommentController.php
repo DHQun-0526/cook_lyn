@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Category; 
+use App\Category;
 use App\Dish;
 use App\Comment;
 use App\Recipes;
@@ -13,11 +13,12 @@ use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
-    public function getDelete($id,$idRecipes){
-    	$comment = Comment::find($id);
-    	$comment->delete();
+    public function getDelete($id, $idRecipes)
+    {
+        $comment = Comment::find($id);
+        $comment->delete();
 
-    	return redirect('admin/recipes/edit/'.$idRecipes)->with('thongbao','Xóa comment thành công');
+        return redirect('admin/recipes/edit/' . $idRecipes)->with('thongbao', 'Xóa comment thành công');
     }
 
     // public function postComment($id,Request $request){
@@ -31,7 +32,8 @@ class CommentController extends Controller
     //     $comment->save();
     //     return redirect('recipes/'.$id)->with('thongbao','Viết bình luận thành công');
     // }
-    public function postComment($id){
+    public function postComment($id)
+    {
         $id_recipe = $id;
         $recipe = Recipes::find($id);
         $comment = new Comment;
@@ -41,8 +43,8 @@ class CommentController extends Controller
         $comment->status = 1;
         $comment->save();
         $respones = array(
-            'user'=>Auth::user(),
-            'comment'=>$comment,
+            'user' => Auth::user(),
+            'comment' => $comment,
         );
         $user = Auth::user();
         return Response::json($respones);

@@ -26,6 +26,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
+
         'password', 'remember_token',
     ];
 
@@ -35,18 +36,24 @@ class User extends Authenticatable
      * @var array
      */
     protected $casts = [
+
         'email_verified_at' => 'datetime',
     ];
 
-    public function messages(){
+    public function messages()
+    {
+
         return $this->hasMany(Message::class);
     }
-    
-     public function comment(){
-        return $this->hasMany('App\Comment','id_user','id');
+
+    public function comment()
+    {
+
+        return $this->hasMany('App\Comment', 'id_user', 'id');
     }
-    
-    public function isAdmin(){
+
+    public function isAdmin()
+    {
         return $this->role == 1;
     }
 }

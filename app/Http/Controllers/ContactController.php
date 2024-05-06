@@ -1,10 +1,10 @@
 <?php
-  
+
 namespace App\Http\Controllers;
-  
+
 use Illuminate\Http\Request;
 use App\Models\Contact;
-  
+
 class ContactController extends Controller
 {
     /**
@@ -16,7 +16,7 @@ class ContactController extends Controller
     {
         return view('contactForm');
     }
-  
+
     /**
      * Write code on Method
      *
@@ -30,10 +30,10 @@ class ContactController extends Controller
             'subject' => 'required',
             'message' => 'required'
         ]);
-  
+
         Contact::create($request->all());
-  
+
         return redirect()->back()
-                         ->with(['success' => 'Thank you for contact us. we will contact you shortly.']);
+            ->with(['success' => 'Thank you for contact us. we will contact you shortly.']);
     }
 }

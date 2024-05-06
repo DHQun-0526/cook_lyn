@@ -10,18 +10,19 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class WebsocketDemoEvent implements ShouldBroadcast 
+class WebsocketDemoEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $somedata;
     public $someface;
+
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($somedata,$someface)
+    public function __construct($somedata, $someface)
     {
         //
         $this->somedata = $somedata;
